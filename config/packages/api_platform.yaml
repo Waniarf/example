@@ -1,0 +1,37 @@
+api_platform:
+    show_webby: false
+    mapping:
+        paths: ['%kernel.project_dir%/src/Entity']
+    defaults:
+        pagination_items_per_page: 25
+        pagination_maximum_items_per_page: 100
+        pagination_client_items_per_page: true
+        pagination_client_enabled: true
+        denormalization_context:
+            allow_extra_attributes: false
+    formats:
+        # the first one is the default
+        json:
+            mime_types: ['application/json']
+        html:
+            mime_types: ['text/html']
+        multipart: ['multipart/form-data']
+        stream: ['application/octet-stream']
+    patch_formats:
+        json: ['application/merge-patch+json']
+        multipart: ['multipart/form-data']
+    swagger:
+        versions: [3]
+        api_keys:
+            userToken:
+                name: Authorization
+                type: header
+    collection:
+        pagination:
+            items_per_page_parameter_name: limit
+            page_parameter_name: page
+    exception_to_status:
+        Symfony\Component\Serializer\Exception\ExceptionInterface: !php/const Symfony\Component\HttpFoundation\Response::HTTP_BAD_REQUEST
+        ApiPlatform\Core\Exception\InvalidArgumentException: !php/const Symfony\Component\HttpFoundation\Response::HTTP_BAD_REQUEST
+        ApiPlatform\Core\Exception\FilterValidationException: !php/const Symfony\Component\HttpFoundation\Response::HTTP_BAD_REQUEST
+        Doctrine\ORM\OptimisticLockException: !php/const Symfony\Component\HttpFoundation\Response::HTTP_CONFLICT

@@ -1,0 +1,23 @@
+{
+    "type": "object",
+    "additionalProperties": false,
+    "required": ["token", "refresh_token", "user_id", "expires_in"],
+    "properties": {
+        "token": {
+            "type": "string",
+            "example": "abc123"
+        },
+        "refresh_token": {
+            "type": "string",
+            "example": "123abc"
+        },
+        "user_id": {
+            "type": "number",
+            "example": "1"
+        },
+        "expires_in": {
+            "type": "number",
+            "example": "604800"
+        }
+    }
+}

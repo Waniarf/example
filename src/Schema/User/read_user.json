@@ -1,0 +1,22 @@
+{
+    "type": "object",
+    "additionalProperties": false,
+    "required": ["id", "email", "roles"],
+    "properties": {
+        "id": {
+            "type": "number",
+            "example": "1"
+        },
+        "email": {
+            "type": "string",
+            "example": "api@example.com"
+        },
+        "roles": {
+            "type": "array",
+            "items": {
+                "type": "string"
+            },
+            "example": ["ROLE_USER"]
+        }
+    }
+}
